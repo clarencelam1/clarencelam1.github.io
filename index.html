@@ -5,22 +5,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(getPastData(logStuff));
+      
+      function getPastData (callback){
+            past_date = $.get(
+                  "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
+                  function(data) {
+                        return new Object(data);
+                  }
+            );
+            callback(past_date);
+      }
+      
       function logStuff(logData){
             console.log(logData);
             console.log(logData.responseJSON.history.observations);
       }
-      function getPastData (callback){
-
-      past_date = $.get(
-            "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
-            function(data) {
-                  return new Object(data);
-            }
-      );
-        
-      callback(past_date);
-
-}
       //getPastData(logStuff);
       
 </script>
