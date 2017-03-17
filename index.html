@@ -9,7 +9,7 @@ $(document).ready(function(){
       $.get(
           "http://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
           function(data) {
-             alert('page content: ' + data);
+             alert('page content: ' + JSON.stringify(data));
           }
       );
     });
