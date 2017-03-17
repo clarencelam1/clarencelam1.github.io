@@ -1,1 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+      $.get(
+          "http://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
+          function(data) {
+             alert('page content: ' + data);
+          }
+      );
+    });
+});
+</script>
+</head>
+<body>
 Clarence's portfilo, coming soon!
+  
+<button>Send an HTTP GET request to a page and get the result back</button>
+
+</body>
+</html>
+
+
