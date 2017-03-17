@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-    $(window).on("load",(function(){
+    $(window).on("load", function(){
       past_date = $.get(
           "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
           function(data) {
@@ -15,7 +15,7 @@ $(document).ready(function(){
       );
         
       console.log(past_date.responseJSON.history.observations;
-    }));
+    });
 });
 </script>
 </head>
