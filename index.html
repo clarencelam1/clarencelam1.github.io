@@ -4,15 +4,15 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-$(document).ready(getPastData());
+$(document).ready(generatePastDates());
       
-      function getPastData (){
+      function getPastObservations(past_date){
             
             
             $.ajax({
                   type: "GET",
                   cache: false,
-                  url: "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
+                  url: "https://api.wunderground.com/api/7919ebab7501471a/history_${past_date}/q/CA/San_Francisco.json",
                   dataType: "json",
                         success: function(data) {
                               console.log(data.history.observations);
@@ -24,7 +24,13 @@ $(document).ready(getPastData());
       };//getPastData function    
 
       
-      
+      function generatePastDates(){
+            var days = [20170314, 20170315];
+            
+            for(var i = 0; i < days.length; i++){
+                  getPastObservations(days[i]);
+            }
+      }
       
                   
             
