@@ -10,9 +10,9 @@ $(document).ready(setupData());
       function setupData(){
             var days = 0;
             days = generatePastDates();
-            $.when(getPastObservations(days[0]), getPastObservations(days[1]), getPastObservations(days[2])).then(getFutureObservations());
+            $.when(getPastTemp(days[0]), getPastTemp(days[1]), getPastTemp(days[2])).then(getFutureTemp());
       };
-      function getPastObservations(past_date){
+      function getPastTemp(past_date){
             return $.ajax({
                   type: "GET",
                   cache: false,
@@ -38,11 +38,11 @@ $(document).ready(setupData());
            return days;
       }
       
-      function getFutureObservations(){
+      function getFutureTemp(){
             return $.ajax({
                   type: "GET",
                   cache: false,
-                  url: "http://api.wunderground.com/api/7919ebab7501471a/hourly10day/q/CA/San_Francisco.json",
+                  url: "https://api.wunderground.com/api/7919ebab7501471a/hourly10day/q/CA/San_Francisco.json",
                   dataType: "json",
                         success: function(data) {
                               console.log(data.hourly_forecast);
