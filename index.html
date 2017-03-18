@@ -20,6 +20,7 @@ $(document).ready(setupData());
                   dataType: "json",
                         success: function(data) {
                               if(time === "past"){
+                                    console.log(date);
                                     console.log(data.history.observations);
                               }
                               else{
