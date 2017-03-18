@@ -5,10 +5,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="date.js"></script>
 <script>
-$(document).ready(generatePastDates());
+$(document).ready(
+      var days = generatePastDates();
+      $.when(getPastObservations(days[0]), getPastObservations(days[1]), getPastObservations(days[2])).then(getFutureObservations());
+);
       
       function getPastObservations(past_date){
-            $.ajax({
+            return $.ajax({
                   type: "GET",
                   cache: false,
                   url: `https://api.wunderground.com/api/7919ebab7501471a/history_${past_date}/q/CA/San_Francisco.json`,
@@ -26,19 +29,15 @@ $(document).ready(generatePastDates());
       
       function generatePastDates(){
             var days = [];
-            var today = Date.today().addDays(-5);
-            
-            for(var i = 0; i < 5; i++){
+            var today = Date.today().addDays(-3);            
+            for(var i = 0; i < 3; i++){
                   days.push(today.addDays(1).toString('yyyyMMdd'));
             }
-            for(var i = 0; i < 5; i++){
-                  getPastObservations(days[i]);
-            }
-            console.log(days);
+           return days;
       }
       
       function getFutureObservations(){
-            $.ajax({
+            return $.ajax({
                   type: "GET",
                   cache: false,
                   url: "http://api.wunderground.com/api/7919ebab7501471a/hourly10day/q/CA/San_Francisco.json",
