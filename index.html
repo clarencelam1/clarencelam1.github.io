@@ -5,13 +5,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="date.js"></script>
 <script>
-$(document).ready({
-      var days = 0;
-      days = generatePastDates();
-      $.when(getPastObservations(days[0]), getPastObservations(days[1]), getPastObservations(days[2])).then(getFutureObservations());
-      }
-      );
+$(document).ready(setupData());
       
+      function setupData(){
+            var days = 0;
+            days = generatePastDates();
+            $.when(getPastObservations(days[0]), getPastObservations(days[1]), getPastObservations(days[2])).then(getFutureObservations());
+      };
       function getPastObservations(past_date){
             return $.ajax({
                   type: "GET",
