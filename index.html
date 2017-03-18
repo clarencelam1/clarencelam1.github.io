@@ -10,7 +10,7 @@ $(document).ready(setupData());
       function setupData(){
             var days = 0;
             days = generatePastDates();
-            $.when(getTemp("past", "history"+days[0]), getTemp("past", "history_"+days[1])).then(getTemp("future", "hourly10day"));
+            $.when(getTemp("past", "history_"+days[0]), getTemp("past", "history_"+days[1])).then(getTemp("future", "hourly10day"));
       };
       function getTemp(time, date){
             return $.ajax({
