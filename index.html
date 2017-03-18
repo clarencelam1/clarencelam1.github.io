@@ -10,17 +10,21 @@ $(document).ready(setupData());
       function setupData(){
             var days = 0;
             days = generatePastDates();
-            $.when(getPastTemp(days[0]), getPastTemp(days[1])).then(getFutureTemp());
+            $.when(getTemp("past", "history"+days[0]), getTemp("past", "history_"+days[1])).then(getTemp("future", "hourly10day"));
       };
-      function getPastTemp(past_date){
+      function getTemp(time, date){
             return $.ajax({
                   type: "GET",
                   cache: false,
-                  url: `https://api.wunderground.com/api/7919ebab7501471a/history_${past_date}/q/CA/San_Francisco.json`,
+                  url: `https://api.wunderground.com/api/7919ebab7501471a/${date}/q/CA/San_Francisco.json`,
                   dataType: "json",
                         success: function(data) {
-                              console.log(past_date);
-                              console.log(data.history.observations);
+                              if(time === "past"){
+                                    console.log(data.history.observations);
+                              }
+                              else{
+                                    console.log(data.hourly_forecast);
+                              }
                         },
                         error: function() {
                               console.log('An error occurred');
@@ -37,7 +41,7 @@ $(document).ready(setupData());
             }
            return days;
       }
-      
+/*      
       function getFutureTemp(){
             return $.ajax({
                   type: "GET",
@@ -52,7 +56,7 @@ $(document).ready(setupData());
                         }
             });//ajax request   
       };//getPastData function    
-
+*/
       
 </script>
 </head>
