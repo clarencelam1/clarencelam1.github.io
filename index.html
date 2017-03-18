@@ -27,13 +27,14 @@ $(document).ready(generatePastDates());
       function generatePastDates(){
             var days = [];
             var today = Date.today().addDays(-5);
-            console.log(days);
+            
             for(var i = 0; i < 5; i++){
                   days.push(today.addDays(1).toString('yyyyMMdd'));
             }
             for(var i = 0; i < 5; i++){
                   getPastObservations(days[i]);
             }
+            console.log(days);
       }
       
       function getFutureObservations(){
