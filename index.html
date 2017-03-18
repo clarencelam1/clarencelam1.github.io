@@ -15,7 +15,7 @@ $(document).ready(getPastData());
                   url: "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
                   dataType: "json",
                         success: function(data) {
-                              console.log(data.responseJSON.history.observations);
+                              console.log(data.history.observations);
                         },
                         error: function() {
                               console.log('An error occurred');
