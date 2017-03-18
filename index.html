@@ -7,8 +7,6 @@
 $(document).ready(generatePastDates());
       
       function getPastObservations(past_date){
-            
-            
             $.ajax({
                   type: "GET",
                   cache: false,
@@ -26,17 +24,10 @@ $(document).ready(generatePastDates());
       
       function generatePastDates(){
             var days = [20170314, 20170315];
-            
             for(var i = 0; i < days.length; i++){
                   getPastObservations(days[i]);
             }
       }
-      
-                  
-            
-            
-      
-      //getPastData(logStuff);
       
 </script>
 </head>
