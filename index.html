@@ -4,28 +4,32 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-$(document).ready(getPastData(logStuff));
+$(document).ready(getPastData());
       
-      function getPastData (callback){
-            past_date = $.get(
-                  "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
-                  function(data) {
-                        return new Object(data);
-                  }
-            );
-            callback(past_date);
-      }
-      
-      function logStuff(logData){
-            if(logData.readyState == 1){
-                  logStuff(logData);
-            }
-            else if(logData.readyState == 4){
-                  console.log(logData);
-                  console.log(logData.responseJSON.history.observations);      
-            }
+      function getPastData (){
             
-      }
+            
+            $.ajax({
+                  type: "GET",
+                  cache: false,
+                  url: "https://api.wunderground.com/api/7919ebab7501471a/history_20170315/q/CA/San_Francisco.json",
+                  dataType: "json",
+                        success: function(data) {
+                              console.log(data.responseJSON.history.observations);
+                        },
+                        error: function() {
+                              console.log('An error occurred');
+                        }
+            });//ajax request   
+      };//getPastData function    
+
+      
+      
+      
+                  
+            
+            
+      
       //getPastData(logStuff);
       
 </script>
