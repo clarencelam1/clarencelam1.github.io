@@ -10,7 +10,7 @@ $(document).ready(generatePastDates());
             $.ajax({
                   type: "GET",
                   cache: false,
-                  url: "https://api.wunderground.com/api/7919ebab7501471a/history_${past_date}/q/CA/San_Francisco.json",
+                  url: `https://api.wunderground.com/api/7919ebab7501471a/history_${past_date}/q/CA/San_Francisco.json`,
                   dataType: "json",
                         success: function(data) {
                               console.log(data.history.observations);
