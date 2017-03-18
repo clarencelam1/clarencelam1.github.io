@@ -17,8 +17,14 @@ $(document).ready(getPastData(logStuff));
       }
       
       function logStuff(logData){
-            console.log(logData);
-            console.log(logData.responseJSON.history.observations);
+            if(logData.readyState == 1){
+                  logStuff(logData);
+            }
+            else if(logData.readyState == 4){
+                  console.log(logData);
+                  console.log(logData.responseJSON.history.observations);      
+            }
+            
       }
       //getPastData(logStuff);
       
