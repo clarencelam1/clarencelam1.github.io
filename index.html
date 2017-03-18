@@ -3,6 +3,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="date.js"></script>
 <script>
 $(document).ready(generatePastDates());
       
@@ -23,8 +24,13 @@ $(document).ready(generatePastDates());
 
       
       function generatePastDates(){
-            var days = [20170314, 20170315];
-            for(var i = 0; i < days.length; i++){
+            var days = [];
+            var today = Date.today().addMonths(-1);
+            
+            for(var i = 0; i < 30; i++){
+                  days.push(Date.today().addDays(1));
+            }
+            for(var i = 0; i < 30; i++){
                   getPastObservations(days[i]);
             }
       }
