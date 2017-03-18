@@ -10,7 +10,7 @@ $(document).ready(setupData());
       function setupData(){
             var days = 0;
             days = generatePastDates();
-            $.when(getPastTemp(days[0]), getPastTemp(days[1]), getPastTemp(days[2])).then(getFutureTemp());
+            $.when(getPastTemp(days[0]), getPastTemp(days[1])).then(getFutureTemp());
       };
       function getPastTemp(past_date){
             return $.ajax({
