@@ -25,12 +25,12 @@ $(document).ready(generatePastDates());
       
       function generatePastDates(){
             var days = [];
-            var today = Date.today().addMonths(-1);
+            var today = Date.today().addDays(-5);
             
-            for(var i = 0; i < 30; i++){
+            for(var i = 0; i < 5; i++){
                   days.push(today.addDays(1).toString('yyyyMMdd'));
             }
-            for(var i = 0; i < 30; i++){
+            for(var i = 0; i < 5; i++){
                   getPastObservations(days[i]);
             }
       }
