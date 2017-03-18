@@ -28,7 +28,7 @@ $(document).ready(generatePastDates());
             var today = Date.today().addMonths(-1);
             
             for(var i = 0; i < 30; i++){
-                  days.push(Date.today().addDays(1));
+                  days.push(Date.today().addDays(1).toString('yyyy/M/d'));
             }
             for(var i = 0; i < 30; i++){
                   getPastObservations(days[i]);
